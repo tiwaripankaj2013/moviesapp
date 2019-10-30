@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Roboto:300,400,500,700,900&display=swap');
+
+@import url("reset.css");
+@import url("variables.css");
+@import url("grid.css");
+@import url("font-awesome.css");
+
+@import url('home.css');
+body {
+	line-height: 1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    letter-spacing: 0.01rem;
+}
+h1,h2,h3,h4,h5,h6{font-family: 'Archivo Black', sans-serif;
+}
+.container{
+    max-width: 1280px;
+    width:100%;
+    margin:0 auto;
+}
+.d-flex{ display: flex;
+        }
+.align-around{justify-content: space-between;}
+.alignself-center{align-self: center;}

@@ -1,0 +1,20 @@
+@import url("global.css");
+
+/* menu css start */
+.m-view{display: none;}
+.logo{  font-size: 1rem; 
+        font-family:'Roboto', sans-serif;;
+        text-decoration: none;
+        font-weight: 500;
+    }
+.menu{
+    width:100%;
+    background-color:var(--black);
+    display: flex;
+}
+.logo{align-self: center; padding: 0.75rem 1rem;}
+.menu__bar{display: flex; }
+.menu__list{display: flex;}
+.menu__item{margin: 0 0.15rem; padding: 0.75rem 2.0rem;align-self: center;}
+.menu__item.active,.menu__item:hover,.menu__item:focus{ background: var(--dark-black);}
+.menu__item--link{text-decoration: none; color:var(--white);text-transform: capitalize;}

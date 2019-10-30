@@ -1,0 +1,42 @@
+/* text color css */
+.text-black{color:var(--black);}
+.text-blue{color:var(--blue);}
+.text-white{color:var(--white);}
+.text-gray{color:var(--gray);}
+.text-red{color:var(--red);}
+
+
+/* background color */
+.bg-white{background-color:var(--white);}
+.bg-dark-black{background-color:var(--dark-black);}
+.bg-black{background-color:var(--black);}
+.bg-gray{background-color:var(--gray);}
+.bg-red{background-color:var(--red);}
+ 
+.tittle__3{
+    font-size: 1.15rem;
+    margin: 0.5rem 0rem;
+    padding: 0.25rem;;
+    text-transform: capitalize;
+}
+
+/* movie card view  */
+.movie{
+    padding: 0rem;
+    box-shadow: 0px 1px 2px 1px #66666636;
+    background:var(--white);
+   margin: 0rem 0.5rem 0.25rem;
+}
+.movie__figure img{
+                margin: 0 auto;
+                max-width: 100%;
+            }
+.movie__desc{margin: 0.75rem; padding-bottom: 1.5rem;}
+.movie__tittle{margin: 0.75rem 0rem;font-size: 1rem; text-transform: capitalize;display: flex;
+    justify-content: space-between;}
+/* .movie__likes{} */
+.movie__type{font-size: 0.65rem; margin-bottom: 0.5rem;}
+
+.movie__rating {text-decoration: none;}
+.movie__details{ font-size: 0.75rem;}
+
