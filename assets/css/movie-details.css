@@ -1,0 +1,52 @@
+.banner{position: relative;}
+.banner__img{height:95vh; width:100%;object-fit:fill;}
+.banner__btn{position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0rem 0rem 0.25rem 0.25rem #4a515461;
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 600;
+}
+.movieDeatil{
+    margin: 2rem 0;
+    padding: 1rem;
+}
+.movidetail__box{
+    padding: 1.5rem 1.5rem;
+    margin-bottom: 1rem;}
+.movieDeatil__heading{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.25em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--black);
+}
+.movieDeatil__description{
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.25em;
+    text-align: justify;
+    }
+.movidetail__sub--heading{
+    font-weight: 600;
+    color: var(--black);
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+.movidetail__sub--content{
+    font-weight: 400;
+    color: var(--gray);
+    font-size: 0.85rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.25rem;
+}

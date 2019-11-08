@@ -25,8 +25,8 @@
                                     class="menu__item--link">Home</a></li>
                             <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="2"
                                     class="menu__item--link">Explore</a></li>
-                            <li class="menu__item"><a href="search-movie.html" tabindex="3"
-                                    class="menu__item--link">search movie</a></li>
+                                    <li class="menu__item"><a href="search-movie.html" tabindex="2"
+                                        class="menu__item--link">search movie</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -40,6 +40,17 @@
                     <h3 class="text-black tittle__3">Latest</h3>
                 </div>
             </header>
+            <div class="row">
+                <div class="col-12">
+                    <form action="" class="form" id="search-movie-form">
+                        <div class="col__12">
+                                <input type="text" class="form searchMovie" name="searchMovie" id="searchMovie">
+                                <label for="searchMovie">Search Movie</label>
+                        </div>
+                        <input type="submit" value="search Movie" class="btn-info">
+                    </form>
+                </div>
+            </div>
             <div class="movie__list d-flex">
                 <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
                 <div class="row" id="temp-data">
@@ -77,37 +88,7 @@
         <!-- /latest movie card section end -->
 
 
-        <!-- Trending movie card section start -->
-        <section class="container">
-            <header class="row">
-                <div class="col__12">
-                    <h3 class="text-black tittle__3">Trending</h3>
-                </div>
-            </header>
-            <div class="movie__list d-flex">
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
-                <div class="row" id="trendingMovies">
-                </div>
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
-            </div>
-        </section>
-        <!-- /Trending movie card section end -->
-
-        <!-- Most watched movie card section start -->
-        <section class="container">
-            <header class="row">
-                <div class="col__12">
-                    <h3 class="text-black tittle__3">Most Watched</h3>
-                </div>
-            </header>
-            <div class="movie__list d-flex">
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
-                <div class="row" id="mostWatchedMovies">
-                </div>
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
-            </div>
-        </section>
-        <!-- /Most watched movie card section end -->
+        
     </main>
 
 
@@ -173,7 +154,7 @@
             </div>
             <!-- modal popup end-->
     </template>
-    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/search-movie.js"></script>
 </body>
 
 </html>

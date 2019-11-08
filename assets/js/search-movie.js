@@ -1,10 +1,38 @@
-import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,similarMovie,actorDetail,actorFimography,searchMovie} from './api.js';
+import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,actorDetail,actorFimography,searchMovie} from './api.js';
 import {movieCard,modalPopup} from './card.js';
 // import {dataMap} from './common.js';
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
 let allMovie = [];
+const moviForm = document.querySelector('#search-movie-form');
+ const movinameInput= document.querySelector('#searchMovie');
+
+//  load eventlistner
+
+loadEventLIstner();
+function loadEventLIstner(){
+    moviForm.addEventListener('submit',getMovieName);
+    movinameInput.addEventListener('keyup',filterMovies);
+}
+
+// get moviename
+function getMovieName(e){
+    if(movinameInput.value === ''){
+        alert('please enter movie namae');
+    }
+
+    movinameInput.value='';
+   
+    e.preventDefault();
+}
+function filterMovies(e){
+    const movinames=e.target.value.toLowerCase();
+    console.log(movinames);
+}
+
+
+let search_query='action';
 
 let moviId = 475557;
 allMovie.push(
@@ -13,10 +41,10 @@ allMovie.push(
         trandingMovie(),
         popularMovie(),
         movieDetail(moviId),
-        similarMovie(),
+        // similarMovie(),
         actorDetail(),
         actorFimography(),
-        searchMovie()
+        searchMovie(search_query)
         );
 
 Promise.all(allMovie).then(data => {
@@ -25,11 +53,13 @@ Promise.all(allMovie).then(data => {
     let trendingMovieData = data.shift();
     let popularMovieData = data.shift();
     let movieDetailData = data.shift();
-    let similarMovie = data.shift();
+    // let similarMovie = data.shift();
     let actorDetail = data.shift();
     let actorFimography = data.shift();
-    let searchMovie= data.shift();
+    let searchMovieData= data.shift();
 
+
+    //console.log(searchMovieData);
     function dataMap(data){
         let datas = '';
         data.map(dataItem => datas += dataItem.name + ', ');
@@ -44,47 +74,24 @@ Promise.all(allMovie).then(data => {
     return genereName;
    }
 
-    latestMovieData.results.slice(0,4).forEach((latestMovie) => {
-        movieCard(
-          `${POSTER_PATH}${latestMovie.poster_path}`,
-            latestMovie.original_title,
-            latestMovie.title,
-            latestMovie.popularity,
-            createGenres(latestMovie.genre_ids),
-            starReview(Math.round(latestMovie.vote_average/2)),
-            latestMovie.id,
-            'temp-data'
-        )
-    });
-  
-    trendingMovieData.results.slice(0,4).forEach((trendingMovie) => {
-         movieCard(
-            `${POSTER_PATH}${trendingMovie.poster_path}`,
-            trendingMovie.original_title,
-            trendingMovie.title,
-            trendingMovie.popularity,
-            createGenres(trendingMovie.genre_ids),
-            starReview(Math.round(trendingMovie.vote_average/2)),
-            trendingMovie.id,
-            'trendingMovies'
-        )
-    });
+//    search movie 
 
-    popularMovieData.results.slice(0,4).forEach((popularMovie) => {
-         movieCard(
-            `${POSTER_PATH}${popularMovie.poster_path}`,
-            popularMovie.original_title,
-            popularMovie.title,
-            popularMovie.popularity,
-            createGenres(popularMovie.genre_ids),
-            starReview(Math.round(popularMovie.vote_average/2)),
-            popularMovie.id,  
-            'mostWatchedMovies'
-        )
-    });
+searchMovieData.results.slice(0,12).forEach((searchMovie) => {
+    movieCard(
+      `${POSTER_PATH}${searchMovie.poster_path}`,
+        searchMovie.original_title,
+        searchMovie.title,
+        searchMovie.popularity,
+        createGenres(searchMovie.genre_ids),
+        starReview(Math.round(searchMovie.vote_average/2)),
+        searchMovie.id,
+        'temp-data'
+    )
+});
+
 
     // modalpopup Data  
-        
+           // console.log(movieDetailData);
     modalPopup(
              movieDetailData.title,
             `${POSTER_PATH}${movieDetailData.poster_path}`,
@@ -107,6 +114,8 @@ function starReview(rateing){
     }
     return rate;
 }
+
+
 
  
 

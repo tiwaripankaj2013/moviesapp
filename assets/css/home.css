@@ -12,12 +12,15 @@
 .bg-black{background-color:var(--black);}
 .bg-gray{background-color:var(--gray);}
 .bg-red{background-color:var(--red);}
- 
+.bg-light{background-color:var(--light);}
 .tittle__3{
     font-size: 1.15rem;
     margin: 0.5rem 0rem;
     padding: 0.25rem;;
     text-transform: capitalize;
+    width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: auto
 }
 
 /* movie card view  */
@@ -26,10 +29,18 @@
     box-shadow: 0px 1px 2px 1px #66666636;
     background:var(--white);
    margin: 0rem 0.5rem 0.25rem;
+   transition: all .5s ease-in-out;
 }
+.movie:hover,.movie:focus{
+    box-shadow: 0px 0px 9px 9px #6666666e;
+    cursor: pointer;
+    transform: scale(1.05);
+            }
+
 .movie__figure img{
                 margin: 0 auto;
                 max-width: 100%;
+               
             }
 .movie__desc{margin: 0.75rem; padding-bottom: 1.5rem;}
 .movie__tittle{margin: 0.75rem 0rem;font-size: 1rem; text-transform: capitalize;display: flex;
@@ -40,3 +51,66 @@
 .movie__rating {text-decoration: none;}
 .movie__details{ font-size: 0.75rem;}
 
+
+/* modal popup */
+.modal-container{display: none;}
+.modal-container:before{
+    content: "";
+    background-color: rgba(0, 0, 0, 0.6);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0 auto;
+    display: block;
+    background: var(--white);
+    padding:0;
+    width:800px;
+    max-width: 100%;
+    z-index: 1;
+}
+.modal__header{
+        border-bottom: 2px solid var(--gray);
+        padding: 1rem;
+}
+.modal__body{
+    padding: 1.25rem;
+}
+.modal__footer{
+    border-top: 2px solid var(--gray);
+    padding: 1rem;
+}
+.modal__figure img{max-width:12rem;}
+.modal__description{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+} 
+.modal__description--heading{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.modal__description--heading{
+    color: var(--gray);
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+/* .modal__hide{visibility: hidden;} */
+
+/* border */
+
+.border__b--gray2{
+    border-bottom:2px solid var(--gray) ;
+}
+.margin__b--1{margin-bottom: 1rem;}

@@ -6,8 +6,9 @@
 @import url("font-awesome.css");
 
 @import url('home.css');
+@import url('movie-details.css');
 body {
-	line-height: 1;
+	line-height: 1em;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight:400;
@@ -20,7 +21,28 @@ h1,h2,h3,h4,h5,h6{font-family: 'Archivo Black', sans-serif;
     width:100%;
     margin:0 auto;
 }
-.d-flex{ display: flex;
+.d-flex{display: flex;
         }
+
 .align-around{justify-content: space-between;}
+.alignself-end{justify-content: flex-end;}
 .alignself-center{align-self: center;}
+
+/* button css */
+
+.btn-default{
+    background: transparent;
+    padding: 0.25rem;
+    border: none;
+    font-size: 1rem;
+    color: var(--gray);
+}
+.btn-close{
+    background: transparent;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--gray);
+    font-size: 1rem;
+    color: var(--gray);
+    border-radius: 0.25rem;
+    box-shadow: 0px 0px 2px 2px #7b727229;
+}

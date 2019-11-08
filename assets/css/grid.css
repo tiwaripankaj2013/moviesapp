@@ -115,5 +115,10 @@
       flex: 0 0 100%;
       max-width: 100%;
     }
-  
+    @media(max-width:480px){
+      .col__xs--12{
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
   }
