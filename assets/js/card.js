@@ -18,7 +18,7 @@ function movieCard(movieImage, movieImgTitle, movieTitle, moviePopularity, movie
     movieGenries.append(document.createTextNode(movieGeneries));
     let movieCardRating = node.querySelector("p .movie__rating").innerHTML = movieRating;
     let movieDetailLink = node.querySelector(".movie__details");
-    movieDetailLink.setAttribute("href", '/detail.html?id=' + movieId);
+    movieDetailLink.setAttribute("href", '/movie-detail.html?id=' + movieId);
 
     document.getElementById(moviCardId).append(node);
 
