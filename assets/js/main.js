@@ -1,18 +1,16 @@
 import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,similarMovie,actorDetail,actorFimography,searchMovie} from './api.js';
 import {movieCard,modalPopup} from './card.js';
-// import {dataMap} from './common.js';
+import {starReview} from './common.js';
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
 let allMovie = [];
-
-let moviId = 475557;
 allMovie.push(
         generes(),
         latestMovie(),
         trandingMovie(),
         popularMovie(),
-        movieDetail(moviId),
+        movieDetail(),
         similarMovie(),
         actorDetail(),
         actorFimography(),
@@ -30,13 +28,16 @@ Promise.all(allMovie).then(data => {
     let actorFimography = data.shift();
     let searchMovie= data.shift();
 
-    function dataMap(data){
+        console.log(actorDetail);
+    
+    //    get array data name to data map method
+       function dataMap(data){
         let datas = '';
         data.map(dataItem => datas += dataItem.name + ', ');
         return datas;
        }
 
-   function createGenres(genresid){
+   let  createGenres = (genresid) =>{
     const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id) )
     let genereName = '';
     currentGenres.map(item => genereName += item.name + ', ');
@@ -84,29 +85,41 @@ Promise.all(allMovie).then(data => {
     });
 
     // modalpopup Data  
-        
-    modalPopup(
-             movieDetailData.title,
-            `${POSTER_PATH}${movieDetailData.poster_path}`,
-                movieDetailData.original_title,
-                 movieDetailData.overview,
-                 dataMap(movieDetailData.genres),
-                dataMap(movieDetailData.credits.cast.slice(0,10)),
-                    'Rajeev Kumar Verma',
-                 starReview(Math.round(movieDetailData.vote_average/2)),
-            
-            'body'
-        );
-        
-});
+    
+   // get movieId
+let modalPopupShow = (e) =>{
+    let modalImgClassget = document.querySelectorAll('.movie__figure');
+    let showModal=(e) =>{
+       let moviId = e.target.getAttribute('data-id');
 
-function starReview(rateing){
-    let rate = ''
-    for(let i =1 ; i<=5 ;i++){
-        rate = `${rate} <i class= "fa ${rateing >= i ?'fa-star' : 'fa-star-o'}"></i>`
+       movieDetail(moviId).then((res,err)=>{
+
+        let movieName = res.original_title;
+        let movieImage =`${POSTER_PATH}${res.poster_path}`;
+        let movieImgTitle= res.title;
+        let modalMovieDesc=res.overview;
+        let modalMovieGenres=dataMap(res.genres);
+        let modalMovieCast=dataMap(res.credits.cast.slice(0,10));
+        let modalMovieDirector=res.title='Todd Phillips';
+
+        let modalRating= starReview(Math.round(res.vote_average/2));
+        // console.log(res);
+           modalPopup(movieName,movieImage,movieImgTitle,modalMovieDesc,
+            modalMovieGenres,modalMovieCast,modalMovieDirector,modalRating,'body');
+       })
+      
+       return moviId;
+       
     }
-    return rate;
+    for (let i = 0; i < modalImgClassget.length; i++) {
+        modalImgClassget[i].addEventListener('click', showModal,false);
+    }
+    
 }
+modalPopupShow();
+
+   
+});
 
  
 

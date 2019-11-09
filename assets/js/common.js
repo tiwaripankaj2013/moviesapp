@@ -1,3 +1,4 @@
+const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
 function starReview(rateing){
     let rate = ''
@@ -7,12 +8,17 @@ function starReview(rateing){
     return rate;
 }
 
-function dataMap(data){
-    let datas = '';
-    data.map(dataItem => datas += dataItem.name + ', ');
-    return datas;
-   }
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+        window.location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
 
-const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
-
-export {dataMap}
+export {starReview,findGetParameter}

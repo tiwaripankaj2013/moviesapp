@@ -1,6 +1,6 @@
 import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,actorDetail,actorFimography,searchMovie} from './api.js';
 import {movieCard,modalPopup} from './card.js';
-// import {dataMap} from './common.js';
+import {starReview} from './common.js';
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
@@ -11,7 +11,7 @@ const moviForm = document.querySelector('#search-movie-form');
 //  load eventlistner
 
 loadEventLIstner();
-function loadEventLIstner(){
+    function loadEventLIstner(){
     moviForm.addEventListener('submit',getMovieName);
     movinameInput.addEventListener('keyup',filterMovies);
 }
@@ -21,11 +21,10 @@ function getMovieName(e){
     if(movinameInput.value === ''){
         alert('please enter movie namae');
     }
-
     movinameInput.value='';
-   
     e.preventDefault();
 }
+
 function filterMovies(e){
     const movinames=e.target.value.toLowerCase();
     console.log(movinames);
@@ -41,7 +40,6 @@ allMovie.push(
         trandingMovie(),
         popularMovie(),
         movieDetail(moviId),
-        // similarMovie(),
         actorDetail(),
         actorFimography(),
         searchMovie(search_query)
@@ -53,7 +51,6 @@ Promise.all(allMovie).then(data => {
     let trendingMovieData = data.shift();
     let popularMovieData = data.shift();
     let movieDetailData = data.shift();
-    // let similarMovie = data.shift();
     let actorDetail = data.shift();
     let actorFimography = data.shift();
     let searchMovieData= data.shift();
@@ -91,30 +88,21 @@ searchMovieData.results.slice(0,12).forEach((searchMovie) => {
 
 
     // modalpopup Data  
-           // console.log(movieDetailData);
-    modalPopup(
-             movieDetailData.title,
-            `${POSTER_PATH}${movieDetailData.poster_path}`,
-                movieDetailData.original_title,
-                 movieDetailData.overview,
-                 dataMap(movieDetailData.genres),
-                dataMap(movieDetailData.credits.cast.slice(0,10)),
-                    'Rajeev Kumar Verma',
-                 starReview(Math.round(movieDetailData.vote_average/2)),
+
+    // modalPopup(
+    //          movieDetailData.title,
+    //         `${POSTER_PATH}${movieDetailData.poster_path}`,
+    //             movieDetailData.original_title,
+    //              movieDetailData.overview,
+    //              dataMap(movieDetailData.genres),
+    //             dataMap(movieDetailData.credits.cast.slice(0,10)),
+    //                 'Rajeev Kumar Verma',
+    //              starReview(Math.round(movieDetailData.vote_average/2)),
             
-            'body'
-        );
+    //         'body'
+    //     );
         
 });
-
-function starReview(rateing){
-    let rate = ''
-    for(let i =1 ; i<=5 ;i++){
-        rate = `${rate} <i class= "fa ${rateing >= i ?'fa-star' : 'fa-star-o'}"></i>`
-    }
-    return rate;
-}
-
 
 
  

@@ -28,7 +28,7 @@
     padding: 0rem;
     box-shadow: 0px 1px 2px 1px #66666636;
     background:var(--white);
-   margin: 0rem 0.5rem 0.25rem;
+   margin: 1.25rem 0.5rem 0.25rem;
    transition: all .5s ease-in-out;
 }
 .movie:hover,.movie:focus{
@@ -114,3 +114,26 @@
     border-bottom:2px solid var(--gray) ;
 }
 .margin__b--1{margin-bottom: 1rem;}
+
+
+/* search movies  */
+
+/* search form  */
+.form__group{margin-top: 2rem;margin-bottom: 2rem;}
+.form__control,input.form__control:focus{padding: 0.5rem 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    outline: 1px solid var(--gray);
+    max-width: 30rem;
+    width: 100%;
+    margin-right: 0;}
+.btn-info,.btn-info:focus{ padding: 0.4rem 1.25rem;
+    font-size: 1.25rem;
+    position: relative;
+    left: -0.18rem;
+    background: var(--blue);
+    color: var(--white);
+    outline: 1px solid var(--blue);
+    border-color: transparent;
+    top: 1px;}
+/* search form  */
