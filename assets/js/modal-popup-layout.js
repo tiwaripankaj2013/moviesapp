@@ -32,9 +32,11 @@ let modalDirector = modalTemplateNode.querySelector(".modal__description--conten
 let modalCardRating = modalTemplateNode.querySelector(".modal__rating").innerHTML = modalRating;
     document.querySelector(body).append(modalTemplateNode);
 
-let modalClose = document.querySelectorAll(".modal__popup--close")[0];
-    modalClose.onclick = () => {
-    document.querySelector('.modal-container').remove();
+let modalClose = document.querySelectorAll(".modal__popup--close");
+    for(let i=0; i<modalClose.length;i++){
+        modalClose[i].onclick = () => {
+            document.querySelector('.modal-container').remove();
+            }
     }
 };
 export {modalPopup};
