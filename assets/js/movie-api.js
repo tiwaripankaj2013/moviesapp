@@ -1,15 +1,9 @@
 const API_KEY = 'c3af9aa883165bf5f7b94ca5a97ada14';
-let movie_id = 290859;
-let ACTOR_ID = 2227467;
-
 let baseurl=`https://api.themoviedb.org/3/`;
 const URL_GENREE = `${baseurl}genre/movie/list?api_key=${API_KEY}&language=en-US`;
 const URL_LATESTMOVIE = `${baseurl}movie/now_playing?api_key=${API_KEY}&language=en-US`;
 const URL_TRANDINGMOVIE = `${baseurl}trending/movie/week?api_key=${API_KEY}&language=en-US`;
 const URL_POPULARMOVIE = `${baseurl}movie/popular?api_key=${API_KEY}&language=en-US`;
-
-
-
 
 
 function generes(){
@@ -24,12 +18,12 @@ function trandingMovie(){
 function popularMovie(){
     return fetch(URL_POPULARMOVIE).then(res => res.json())
 }
-function movieDetail(id){
-    const URL_MOVIEDETAIL = `${baseurl}movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=credits `;
+function movieDetail(movieId){
+    const URL_MOVIEDETAIL = `${baseurl}movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits `;
     return fetch(URL_MOVIEDETAIL).then(res => res.json())
 }
-function similarMovie(id){
-    const URL_SIMILARMOVIE = `${baseurl}movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
+function similarMovie(movieId){
+    const URL_SIMILARMOVIE = `${baseurl}movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`;
     return fetch(URL_SIMILARMOVIE).then(res => res.json())
 }
 function actorDetail(ACTOR_ID){

@@ -1,5 +1,5 @@
-import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,actorDetail,actorFimography,searchMovie} from './api.js';
-import {movieCard,modalPopup} from './card.js';
+import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,actorDetail,actorFimography,searchMovie} from './movie-api.js';
+import {movieCard} from './movie-card.js';
 import {starReview} from './common.js';
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
@@ -85,22 +85,6 @@ searchMovieData.results.slice(0,12).forEach((searchMovie) => {
         'temp-data'
     )
 });
-
-
-    // modalpopup Data  
-
-    // modalPopup(
-    //          movieDetailData.title,
-    //         `${POSTER_PATH}${movieDetailData.poster_path}`,
-    //             movieDetailData.original_title,
-    //              movieDetailData.overview,
-    //              dataMap(movieDetailData.genres),
-    //             dataMap(movieDetailData.credits.cast.slice(0,10)),
-    //                 'Rajeev Kumar Verma',
-    //              starReview(Math.round(movieDetailData.vote_average/2)),
-            
-    //         'body'
-    //     );
         
 });
 

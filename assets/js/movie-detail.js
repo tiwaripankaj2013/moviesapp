@@ -1,6 +1,7 @@
 
-import {generes,latestMovie,trandingMovie,popularMovie,movieDetail,similarMovie,actorDetail,actorFimography,searchMovie} from './api.js';
-import {movieCard,movieDetailLayout,modalPopup} from './card.js';
+import {generes,movieDetail,similarMovie} from './movie-api.js';
+import {movieCard} from './movie-card.js';
+import {movieDetailLayout} from './movie-detail-layout.js';
 import {starReview,findGetParameter} from './common.js';
 
 
@@ -8,32 +9,19 @@ const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
 let allMovie = [];
 
-const id = findGetParameter('id');
+const movieId = findGetParameter('id');
 
 allMovie.push(
         generes(),
-        latestMovie(),
-        trandingMovie(),
-        popularMovie(),
-        movieDetail(id),
-        similarMovie(id),
-        actorDetail(),
-        actorFimography(),
-        searchMovie()
+        movieDetail(movieId),
+        similarMovie(movieId),
         );
 
 Promise.all(allMovie).then(data => {
     let generesData = data.shift();
-    let latestMovieData = data.shift();
-    let trendingMovieData = data.shift();
-    let popularMovieData = data.shift();
     let movieDetailData = data.shift();
     let similarMovies = data.shift();
-    let actorDetail = data.shift();
-    let actorFimography = data.shift();
-    let searchMovie= data.shift();
 
-   
    function createGenres(genresid){
     const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id) )
     let genereName = '';
@@ -42,13 +30,12 @@ Promise.all(allMovie).then(data => {
     return genereName;
    }
 
-//    get array data name to data map method
+//  get array data name to data map method
    function dataMap(data){
     let datas = '';
     data.map(dataItem => datas += dataItem.name + ', ');
     return datas;
    }
-
 
 // movidetail data 
     movieDetailLayout(
@@ -63,6 +50,7 @@ Promise.all(allMovie).then(data => {
             'movidetailsapp'
         );
         
+       
     // similar Movies list
     similarMovies.results.slice(0,4).forEach((similarMovie)=>{
          movieCard(
@@ -77,6 +65,3 @@ Promise.all(allMovie).then(data => {
         )
     })
 });
-
-
-

@@ -1,5 +1,6 @@
-import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail,similarMovie,actorDetail,actorFimography,searchMovie} from './api.js';
-import {movieCard,modalPopup} from './card.js';
+import  {generes,latestMovie,trandingMovie,popularMovie,movieDetail} from './movie-api.js';
+import {movieCard} from './movie-card.js';
+import {modalPopup} from './modal-popup-layout.js';
 import {starReview} from './common.js';
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
@@ -10,11 +11,6 @@ allMovie.push(
         latestMovie(),
         trandingMovie(),
         popularMovie(),
-        movieDetail(),
-        similarMovie(),
-        actorDetail(),
-        actorFimography(),
-        searchMovie()
         );
 
 Promise.all(allMovie).then(data => {
@@ -22,15 +18,9 @@ Promise.all(allMovie).then(data => {
     let latestMovieData = data.shift();
     let trendingMovieData = data.shift();
     let popularMovieData = data.shift();
-    let movieDetailData = data.shift();
-    let similarMovie = data.shift();
-    let actorDetail = data.shift();
-    let actorFimography = data.shift();
-    let searchMovie= data.shift();
-
-        console.log(actorDetail);
     
-    //    get array data name to data map method
+
+    //  get array data name to data map method
        function dataMap(data){
         let datas = '';
         data.map(dataItem => datas += dataItem.name + ', ');
@@ -117,7 +107,6 @@ let modalPopupShow = (e) =>{
     
 }
 modalPopupShow();
-
    
 });
 
