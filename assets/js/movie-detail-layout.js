@@ -1,32 +1,38 @@
  
-// template movieDetails Layout in insert data;
+/* template movieDetails Layout in insert data; */
 let movieDetailLayout = (movieBanner, movieBannerTitle, movieDetailTitle,
                            movieDetailDesc, movieGeneries, movieDetailCast,
                             mvoiDetailDirector, movieDetailRatings, moviDetailId)=>{
 
-    let movieDetailLayout = document.querySelector(".moviDetailTemplate");
-    let moviDetailLayout = movieDetailLayout.content.getElementById("moviDetailLayout");
+    var movieDetailLayout = document.querySelector(".moviDetailTemplate");
+    var moviDetailLayout = movieDetailLayout.content.getElementById("moviDetailLayout");
 
-    let node = document.importNode(moviDetailLayout, true);
-    let Moviefigure = node.querySelector('.banner__img');
-        Moviefigure.setAttribute("src", movieBanner);
-        Moviefigure.setAttribute("alt", movieBannerTitle);
-        Moviefigure.setAttribute("title", movieBannerTitle);
+    var node = document.importNode(moviDetailLayout, true);
+    var Moviefigure = node.querySelector('.banner__img');
+        Moviefigure.src= movieBanner;
+        Moviefigure.alt= movieBannerTitle;
+        Moviefigure.title =  movieBannerTitle;
 
-    let movieDetailHeading = node.querySelector(".movieDeatil__heading");
-        movieDetailHeading.prepend(document.createTextNode(movieDetailTitle));
-    let movieDetailDescription = node.querySelector(".movieDeatil__description");
-        movieDetailDescription.prepend(document.createTextNode(movieDetailDesc));
+        node.querySelector(".movieDeatil__heading").prepend(document.createTextNode(movieDetailTitle));
 
-    let movieDetailGenres = node.querySelector(".movieDetailGenres");
-        movieDetailGenres.append(document.createTextNode(movieGeneries));
-    let movieDetailCastCon = node.querySelector(".movieDetailCast");
-        movieDetailCastCon.append(document.createTextNode(movieDetailCast));
+        node.querySelector(".movieDeatil__description").prepend(document.createTextNode(movieDetailDesc));
 
-    let moviedetailDirectorName = node.querySelector(".moviDetailDirector");
-        moviedetailDirectorName.append(document.createTextNode(mvoiDetailDirector));
+        node.querySelector(".movieDetailGenres").append(document.createTextNode(movieGeneries));
 
-    let movieDetailRating = node.querySelector(".moviDetailRating").innerHTML = movieDetailRatings;
+     let castname =   node.querySelector(".movieDetailCast");
+         movieDetailCast.slice(0,10).forEach(castName =>{
+            let aTag = document.createElement('a');
+                aTag.setAttribute('href','actor-details.html?id='+castName.id);
+                aTag.innerText=castName.name;  
+                castname.append(aTag);
+              //   movieDetailData.credits.appendChild(aTag);
+              //   movieDetailData.credits.append();
+          }),
+
+        node.querySelector(".moviDetailDirector").append(document.createTextNode(mvoiDetailDirector));
+
+        node.querySelector(".moviDetailRating").innerHTML = movieDetailRatings;
+        
     document.getElementById(moviDetailId).append(node);
 }
 

@@ -1,0 +1,62 @@
+.actor {
+    margin: 2rem 0rem;
+    display: block;
+}
+
+.actor__profile {
+    margin-right: 2rem;
+}
+
+.actor__profile--img {
+    max-width: 25rem;
+    width: 100%;
+}
+.actor__profile--img img{
+    max-width: 20rem;
+    width: 100%;
+}
+
+.actor__detail {
+    padding: 2rem;
+}
+
+.actor__name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 2.5rem;
+}
+
+.actor__DOB {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--gray);
+}
+.actor__DOB span{padding-right: 1rem;}
+.actor__rating {
+    display: flex;
+    align-items: end;
+    background: #f2f4f5;
+    padding: 1.15rem 1.5rem;
+}
+
+.actor__rating--number {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-left: 0.35rem;
+}
+
+.actor__rating--number span {
+    display: inline-block;
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.actor__description{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: justify;
+    color: var(--gray);
+}

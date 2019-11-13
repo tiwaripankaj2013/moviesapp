@@ -50,3 +50,4 @@
     margin-bottom: 0.5rem;
     line-height: 1.25rem;
 }
+.movidetail__sub--content a{ text-decoration: none; padding: 0.25rem; color: var(--blue);}

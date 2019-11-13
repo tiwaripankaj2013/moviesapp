@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="All latest and trending movies list ">
+    <meta name="keywords" content="hollywood movies, action movies , romantic movies, movies">
+    <meta name="author" content="Pankaj Kumar Tiwari">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <title>Movies Details App</title>
+</head>
+
+<body>
+    <main id="main">
+        <header class="menu">
+            <section class="container">
+                <div class="row">
+                    <nav class="menu__bar">
+                        <a href="index.html" class="logo text-white">Movie App</a>
+                        <a href="" class="text-white m-view"><i class="fa fa-3x fa-bars"></i></a>
+
+                        <ul class="menu__list" role="menu">
+
+                            <li class="menu__item active"><a href="JavaScript:Void(0);" tabindex="1"
+                                    class="menu__item--link">Home</a></li>
+                            <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="2"
+                                    class="menu__item--link">Explore</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+        </header>
+        <div id="actordetail"></div>
+        <template class="actorDetailTemplate">
+            <section class="container-fluid " id="actorDetailLayout">
+                <!--  actor Details card section start -->
+                <div class="container">
+                    <articel class="actor">
+                        <div class="row">
+                            <div class="col__4 col__sm--12">
+                                <div class="actor__profile">
+                                    <figure class="actor__profile--img">
+                                        <img src="./assets/images/placeholder300X300.png" alt="" class="">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col__8 col__sm--12">
+                                <div class="actor__detail bg-light">
+                                    <div class="row">
+                                            <div class="col__9">
+                                                <h3 class="actor__name">Prabahs</h3>
+                                                <p class="actor__DOB"><span>Date Of Birth</span></p>
+                                            </div>
+                                        <div class="col__3">
+                                            <div class="actor__rating">
+                                                <i class="fa fa-star fa-4x"></i>
+                                                <h3 class="actor__rating--number">Meter<span> </span></h3>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="row ">
+                                        
+                                        <div class="col__12">
+                                            <p class="actor__description"> </p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </articel>
+                </div>
+                <!-- /actor  Details close   end -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col__12">
+                            <h3>Filmography</h3>
+                        </div>
+                    </div>
+
+                    <div class="row bg-light movie__year--isert" >
+                        <div class="col__12">
+                            <h3 class="movie__year">2017</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col__md-3">
+                            <div class="filmography">
+                                <p> <label for="">Title</label> Movie 1</p>
+                                <p> <label for="">Year</label> 2014</p>
+                                <p> <label for="">Character</label> XYZ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </template>
+
+
+
+
+       
+    </main>
+    <script type="module" src="./assets/js/actor-detail.js"></script>
+</body>
+
+</html>

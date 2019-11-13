@@ -1,0 +1,16 @@
+/* text color css */
+.text-black{color:var(--black);}
+.text-blue{color:var(--blue);}
+.text-white{color:var(--white);}
+.text-gray{color:var(--gray);}
+.text-red{color:var(--red);}
+
+
+/* background color */
+.bg-white{background-color:var(--white);}
+.bg-dark-black{background-color:var(--dark-black);}
+.bg-black{background-color:var(--black);}
+.bg-gray{background-color:var(--gray);}
+.bg-red{background-color:var(--red);}
+.bg-light{background-color:var(--light);}
+ 

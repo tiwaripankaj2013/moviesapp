@@ -1,20 +1,20 @@
 
-import {generes,movieDetail,similarMovie} from './movie-api.js';
+import {movieApi} from './movie-api.js';
 import {movieCard} from './movie-card.js';
 import {movieDetailLayout} from './movie-detail-layout.js';
-import {starReview,findGetParameter} from './common.js';
+import {utility} from './utility.js';
 
 
 const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
 
 let allMovie = [];
 
-const movieId = findGetParameter('id');
+const movieId = utility.getIdToURL('id');
 
 allMovie.push(
-        generes(),
-        movieDetail(movieId),
-        similarMovie(movieId),
+    movieApi.generes(),
+    movieApi.movieDetail(movieId),
+    movieApi.similarMovie(movieId),
         );
 
 Promise.all(allMovie).then(data => {
@@ -29,37 +29,27 @@ Promise.all(allMovie).then(data => {
     genereName = genereName.slice(0, -2); 
     return genereName;
    }
-
-//  get array data name to data map method
-   function dataMap(data){
-    let datas = '';
-    data.map(dataItem => datas += dataItem.name + ', ');
-    return datas;
-   }
-
 // movidetail data 
     movieDetailLayout(
-        `${POSTER_PATH}${movieDetailData.poster_path}`,
+        `${POSTER_PATH}${movieDetailData.backdrop_path}`,
             movieDetailData.title,
             movieDetailData.original_title,
             movieDetailData.overview,
-            dataMap(movieDetailData.genres),
-            dataMap(movieDetailData.credits.cast.slice(0,10)),
+            utility.dataMap(movieDetailData.genres),
+            movieDetailData.credits.cast,
             movieDetailData.name='Todd Phillips',
-            starReview(Math.round(movieDetailData.vote_average/2)),
+            utility.starReview(Math.round(movieDetailData.vote_average/2)),
             'movidetailsapp'
         );
         
-       
     // similar Movies list
     similarMovies.results.slice(0,4).forEach((similarMovie)=>{
          movieCard(
-            `${POSTER_PATH}${similarMovie.poster_path}`,
+            `${POSTER_PATH}${similarMovie.backdrop_path}`,
             similarMovie.original_title,
             similarMovie.title,
-            similarMovie.popularity,
             createGenres(similarMovie.genre_ids),
-            starReview(Math.round(similarMovie.vote_average/2)),
+            utility.starReview(Math.round(similarMovie.vote_average/2)),
             similarMovie.id,
             'similarMovies' 
         )
