@@ -29,6 +29,7 @@ Promise.all(allMovie).then(data => {
     genereName = genereName.slice(0, -2); 
     return genereName;
    }
+   console.log(movieDetailData);
 // movidetail data 
     movieDetailLayout(
         `${POSTER_PATH}${movieDetailData.backdrop_path}`,
@@ -37,7 +38,7 @@ Promise.all(allMovie).then(data => {
             movieDetailData.overview,
             utility.dataMap(movieDetailData.genres),
             movieDetailData.credits.cast,
-            movieDetailData.name='Todd Phillips',
+            utility.directorName(movieDetailData),
             utility.starReview(Math.round(movieDetailData.vote_average/2)),
             'movidetailsapp'
         );
@@ -54,4 +55,4 @@ Promise.all(allMovie).then(data => {
             'similarMovies' 
         )
     })
-});
+}).catch(err => document.querySelector('body').innerHTML=err);

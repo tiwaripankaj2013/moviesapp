@@ -11,19 +11,19 @@ const ACTOR_ID = utility.getIdToURL('id');
 
 allActor.push(
     movieApi.actorDetail(ACTOR_ID),
-    movieApi.actorFimography(ACTOR_ID)
+    movieApi.actorFilmography(ACTOR_ID)
         );
 
 Promise.all(allActor).then(data => {
     let actorDetail= data.shift();
-    let actorFimography  = data.shift();
+    let actorFilmography  = data.shift();
 
-/*actor details*/
-   var actorDetailLayout = document.querySelector(".actorDetailTemplate");
-   var actorDetailnode = actorDetailLayout.content.getElementById("actorDetailLayout");
+/*actor details insert data in template tag*/
+   let actorDetailLayout = document.querySelector(".actorDetailTemplate");
+   let actorDetailnode = actorDetailLayout.content.getElementById("actorDetailLayout");
 
-   var node = document.importNode(actorDetailnode, true);
-   var actorfigure = node.querySelector('.actor__profile--img img');
+   let node = document.importNode(actorDetailnode, true);
+   let actorfigure = node.querySelector('.actor__profile--img img');
        actorfigure.src=`${POSTER_PATH}${actorDetail.profile_path}`;
        actorfigure.alt= actorDetail.name;
        actorfigure.title = actorDetail.name;
@@ -36,65 +36,47 @@ Promise.all(allActor).then(data => {
 
        document.getElementById('actordetail').append(node);
 
-// filmo graphy year
+    /*end details insert data in template tag */ 
 
-    //    let movieYears = [];
-       actorFimography = actorFimography.cast.forEach((actorFimoYear) =>{
-            actorFimoYear.year = actorFimoYear.release_date ? parseInt(actorFimoYear.release_date.split('-')[0]) : '';
-            
-       
-               
-            // movieYears.push(actorFimoYear.year)
-            return actorFimoYear;
-            actorFimography.sort((x,y) =>(x.year, y.year) ? 1 :((y.year > x.year) ? -1 : 0));
-
-            // console.log(actorFimography);
-
-            let groupMovieYear = [];
-            let movieYears = [];
-
-            for(let i=0; i<actorFimography.length; i++)
-                {
-                    if(movieYears.includes(actorFimography[i].year)){
-                        groupMovieYear.forEach(actorFimo =>{
-                            if(actorFimo.year == actorFimography[i].year) actorFimo.films.push(actorFimography[i]);
-                            else return actorFimo;
-                        })  
-                    }
-                    else{
-                        movieYears.push(actorFimography[i].year);
-                            groupMovieYear.push({
-                                year:actorFimography[i].year,
-                                films:[actorFimography[i]]
-                            })
-                        }    
-                }
-                
-                // insert movie year and name into html
-
-                for(let i=0; i<groupMovieYear.length;i++){
-                    if(groupMovieYear[i].year){
-                      let movieyearIns =  document.querySelector('.movie__year--isert')
-                        let h4 = document.createElement('h4');
-                        h4.append(document.createTextNode(groupMovieYear[i].year));
-                        movieyearIns.append(h4);
-
-                        for(j=0;j<groupMovieYear[i].films.length;j++){
-                            let movieYearData = document.querySelector('.filmography');
-                            var article = document.createElement('article');
-                                article.setAttribute('class','movie__years');
-                                movieYearData.append(article);
-                                debugger;
-                                var h5 = document.createElement('h4');
-                                h5.setAttribute('class','movie__years-data');
-                                h5.append(document.createTextNode(groupMovieYear[i].films[j].title));
-                                // console.log(h5);
-                                article.append(h5);
-
-                        }
-
-                    }
-                }
+    
+		var filmYears = [];
+		for(let i = 0 ; i < actorFilmography.cast.length ; i++){
+			let filmYear = actorFilmography.cast[i].release_date.split("-")[0];
+			if(filmYears.indexOf(filmYear) === -1){
+				filmYears.push(filmYear);
+			}
+		}
         
-        });
-})
+        filmYears = filmYears.sort();
+// filmography html layout in insert data
+
+        let filmoTemplate = document.querySelector('.filmography');
+        let filmographyLayout = filmoTemplate.content.querySelector('.filmographyLayout');
+        let filmographynode = document.importNode(filmographyLayout, true);
+
+
+        for(j=0;j<filmYears.length;j++){
+
+            filmographynode.querySelector('.movie__year').append(document.createTextNode(filmYears[j]));
+
+            for(k=0;k< actorFilmography.cast.length;k++){
+                let year = filmYears.cast[k].release_date.split("-")[0];
+                if(filmYears[j]==filmYear){
+                    
+                }
+            }
+        }
+      
+
+       
+        
+            
+
+            console.log(document.querySelector('#filmYear').length)
+            document.querySelector('#filmYear').append(filmographyLayout);
+    
+
+       
+
+ })
+//  .catch(err => document.querySelector('body').innerHTML=err);

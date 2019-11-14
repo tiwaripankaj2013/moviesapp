@@ -5,7 +5,7 @@ var utility = {
         return datas;
        },
     getIdToURL:(parameterName) => {
-            var result = null,
+            let result = null,
                 tmp = [];
                 window.location.search
                 .substr(1)
@@ -22,6 +22,10 @@ var utility = {
                 rate = `${rate} <i class= "fa ${rateing >= i ?'fa-star' : 'fa-star-o'}"></i>`;
             }
             return rate;
+        },
+        directorName:(moviiDetailData) =>{
+            let director = moviiDetailData.credits.crew.filter(movieDirector => movieDirector.job === 'Director')[0];
+            return director.name;
         }
  }
 

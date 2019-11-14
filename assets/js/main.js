@@ -11,6 +11,7 @@ allMovie.push(
     movieApi.latestMovie(),
     movieApi.trandingMovie(),
     movieApi.popularMovie(),
+  
         );
 
 Promise.all(allMovie).then(data => {
@@ -18,7 +19,7 @@ Promise.all(allMovie).then(data => {
     let latestMovieData = data.shift();
     let trendingMovieData = data.shift();
     let popularMovieData = data.shift();
-    
+   
    let  createGenres = (genresid) =>{
     const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id) )
     let genereName = '';
@@ -79,11 +80,11 @@ let modalPopupShow = (e) =>{
         let modalMovieDesc=res.overview;
         let modalMovieGenres=utility.dataMap(res.genres);
         let modalMovieCast=utility.dataMap(res.credits.cast.slice(0,10)); 
-        let modalMovieDirector=res.title='Todd Phillips';
+        let modalMovieDirector=utility.directorName(res);
         let modalRating= utility.starReview(Math.round(res.vote_average/2));
            modalPopup(movieName,movieImage,movieImgTitle,modalMovieDesc,
             modalMovieGenres,modalMovieCast,modalMovieDirector,modalRating,'body');
-            
+            console.log(res);
        });
      
        return moviId;
