@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="All latest and trending movies list ">
     <meta name="keywords" content="hollywood movies, action movies , romantic movies, movies">
-    <meta name="author" content="Sahil Chhabra">
+    <meta name="author" content="Pankaj Kumar Tiwari">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./assets/css/style.css" rel="stylesheet">
     <title>Movies List App</title>
@@ -25,8 +25,8 @@
                                     class="menu__item--link">Home</a></li>
                             <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="2"
                                     class="menu__item--link">Explore</a></li>
-                                    <li class="menu__item"><a href="search-movie.html" tabindex="2"
-                                        class="menu__item--link">search movie</a></li>
+                            <li class="menu__item">
+                                <a href="search-movie.html" tabindex="2" class="menu__item--link">search movie</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -40,17 +40,23 @@
                     <form action="" class="form" id="search-movie-form">
                         <div class="col__12">
                             <div class="form__group">
-                                    <input type="text" class="form__control searchMovie" placeholder="Search for Movies ,actors ,genre.." name="searchMovie" id="searchMovie">
-                                    <button type="submit"  class="btn-info"><i class="fa fa-search"></i></button>
+                                <input type="text" class="form__control searchMovie" value=""
+                                    placeholder="Search for Movies ,actors ,genre.." name="searchMovie"
+                                    id="searchMovie">
+                                <button type="submit" class="btn-info"><i class="fa fa-search"></i></button>
                             </div>
-                               
-                              
                         </div>
-                       
+
                     </form>
+                </div>
+                <div class="col__sm--6 col__6 col__xs--12">
+                    <div class="form__group"><input type="range" min="1"  max="10" value="" class="form__control filterMovie"/></div>
+                        <output class="filterValue"></output>
+
                 </div>
             </div>
             <div class="movie__list d-flex">
+                
                 <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
                 <div class="row" id="temp-data">
                     <template class="template">
@@ -79,17 +85,53 @@
                             </div>
                             <!-- movie card end -->
                         </article>
-                </template>
+                    </template>
+                </div>
+                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
             </div>
-            <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
-            </div>
+
         </section>
         <!-- /latest movie card section end -->
+        <!-- search movie results -->
+          
+          <section class="container">
+                <header class="row">
+                    <div class="col__12">
+                        <h3 class="text-black tittle__3">Search movie results</h3>
+                    </div>
+                </header>
+                <div class="movie__list d-flex">
+                    <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
+                    <div class="row" id="searcMovieResult">
+                    </div>
+                    <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
+                </div>
+            </section>
+          
+        <!-- search movie results -->
 
 
-        
+        <!-- local movie results -->
+          
+          <section class="container">
+                <header class="row">
+                    <div class="col__12">
+                        <h3 class="text-black tittle__3">Local movies</h3>
+                    </div>
+                </header>
+                <div class="movie__list d-flex">
+                    <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
+                    <div class="row" id="localmovieResult">
+                    </div>
+                    <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
+                </div>
+            </section>
+          
+        <!-- local movie results -->
+
+
+
     </main>
-
 
     <template id="modalTemplate">
         <!-- modal popup start-->

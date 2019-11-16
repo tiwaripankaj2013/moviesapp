@@ -48,6 +48,9 @@ Promise.all(allActor).then(data => {
 		}
         
         filmYears = filmYears.sort();
+        for(j=0;j<filmYears.length;j++){
+            
+        }
 // filmography html layout in insert data
 
         let filmoTemplate = document.querySelector('.filmography');
@@ -55,17 +58,17 @@ Promise.all(allActor).then(data => {
         let filmographynode = document.importNode(filmographyLayout, true);
 
 
-        for(j=0;j<filmYears.length;j++){
+        // for(j=0;j<filmYears.length;j++){
 
-            filmographynode.querySelector('.movie__year').append(document.createTextNode(filmYears[j]));
+        //     filmographynode.querySelector('.movie__year').append(document.createTextNode(filmYears[j]));
 
-            for(k=0;k< actorFilmography.cast.length;k++){
-                let year = filmYears.cast[k].release_date.split("-")[0];
-                if(filmYears[j]==filmYear){
+        //     for(k=0;k< actorFilmography.cast.length;k++){
+        //         let year = filmYears.cast[k].release_date.split("-")[0];
+        //         if(filmYears[j]==filmYear){
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
       
 
        
@@ -78,5 +81,4 @@ Promise.all(allActor).then(data => {
 
        
 
- })
-//  .catch(err => document.querySelector('body').innerHTML=err);
+ }).catch(err => document.querySelector('body').innerHTML=err);

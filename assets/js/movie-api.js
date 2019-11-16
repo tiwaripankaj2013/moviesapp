@@ -1,10 +1,10 @@
 const API_KEY = 'c3af9aa883165bf5f7b94ca5a97ada14';
 let baseurl=`https://api.themoviedb.org/3/`;
 
-var URL_GENREE = `${baseurl}genre/movie/list?api_key=${API_KEY}&language=en-US`;
-var URL_LATESTMOVIE = `${baseurl}movie/now_playing?api_key=${API_KEY}&language=en-US`;
-var URL_TRANDINGMOVIE = `${baseurl}trending/movie/week?api_key=${API_KEY}&language=en-US`;
-var URL_POPULARMOVIE = `${baseurl}movie/popular?api_key=${API_KEY}&language=en-US`;
+const URL_GENREE = `${baseurl}genre/movie/list?api_key=${API_KEY}&language=en-US`;
+const URL_LATESTMOVIE = `${baseurl}movie/now_playing?api_key=${API_KEY}&language=en-US`;
+const URL_TRANDINGMOVIE = `${baseurl}trending/movie/week?api_key=${API_KEY}&language=en-US`;
+const URL_POPULARMOVIE = `${baseurl}movie/popular?api_key=${API_KEY}&language=en-US`;
 
 
 export var movieApi = {
