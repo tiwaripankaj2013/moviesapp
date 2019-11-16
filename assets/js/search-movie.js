@@ -43,27 +43,11 @@ Promise.all(allMovie).then(data => {
     return genereName;
    }
 
-    allMovies.slice(0,12).forEach((allMovie) => {
-        movieCard(
-          `${POSTER_PATH}${allMovie.backdrop_path}`,
-            allMovie.original_title,
-            allMovie.title,
-            createGenres(allMovie.genre_ids),
-            utility.starReview(Math.round(allMovie.vote_average/2)),
-            allMovie.id,
-            'searcMovieResult'
-        )
-    });
-
-
-
-// search movies 
-
 
 var inputvalue = document.querySelector('.searchMovie').addEventListener('keyup', getValue);
 var filterRating = document.querySelector('.filterMovie').addEventListener('input',filterValue);
 
-
+// filter movies 
 function filterValue(e){
     let filterValue = this.value;
     document.querySelector('.filterValue').innerHTML=filterValue;
@@ -72,22 +56,19 @@ function filterValue(e){
         var localMovies = localdata.filter((singlemovie)=>{
           
             let singleMovieAvg = Math.round(singlemovie.vote_average);
-                console.log(singlemovie);
-
-                if(singleMovieAvg == filterValue){
-                    
+                console.log(singleMovieAvg);
+                    document.querySelector('#searcMovieResult').innerHTML ='';
+                if(filterValue <= singleMovieAvg ){
                     console.log(singlemovie);
                     return singlemovie;
 
                 }
 
                 
-           // return Math.round(singlemovie.vote_average).includes(filterValue);
+        // return singleMovieAvg.includes(filterValue);
         });
 
-       
-      
-        localMovies.slice(0,12).forEach((localMovie) => {
+        localMovies.forEach((localMovie) => {
             movieCard(
               `${POSTER_PATH}${localMovie.backdrop_path}`,
                 localMovie.original_title,
@@ -95,14 +76,14 @@ function filterValue(e){
                 createGenres(localMovie.genre_ids),
                 utility.starReview(Math.round(localMovie.vote_average/2)),
                 localMovie.id,
-                'localmovieResult'
+                'searcMovieResult'
             )
         });
     }
     
 }
  
-
+// serach movies 
 function  getValue(e){
   
    let inputvalues = this.value.toLowerCase();
@@ -111,7 +92,7 @@ function  getValue(e){
    var localMovies =  localdata.filter( (singlemovie) => {
        return singlemovie.title.toLowerCase().includes(inputvalues)
     });
-
+    document.querySelector('#searcMovieResult').innerHTML ='';
     localMovies.slice(0,12).forEach((localMovie) => {
         movieCard(
           `${POSTER_PATH}${localMovie.backdrop_path}`,
@@ -120,17 +101,12 @@ function  getValue(e){
             createGenres(localMovie.genre_ids),
             utility.starReview(Math.round(localMovie.vote_average/2)),
             localMovie.id,
-            'localmovieResult'
+            'searcMovieResult'
         )
     });
 }
 e.preventDefault();
 }
-
-
-
-
-
 
 
 

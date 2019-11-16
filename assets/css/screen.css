@@ -14,3 +14,8 @@
 .bg-red{background-color:var(--red);}
 .bg-light{background-color:var(--light);}
  
+ .range__slider{
+    max-width: 320px;
+    width: 100%;
+     cursor:ew-resize;
+    }
