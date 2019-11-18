@@ -9,6 +9,7 @@
 @import url('movie-card.css');
 @import url('movie-modal-popup.css');
 @import url('actor-details.css');
+@import url('movie-search.css');
 
 body {
 	line-height: 1em;
@@ -19,6 +20,7 @@ body {
 }
 h1,h2,h3,h4,h5,h6{font-family: 'Archivo Black', sans-serif;
 }
+p{font-size: 1rem; line-height: 1rem;}
 .container{
     max-width: 1280px;
     width:100%;

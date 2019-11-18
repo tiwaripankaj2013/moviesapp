@@ -18,3 +18,12 @@
 .menu__item{margin: 0 0.15rem; padding: 0.75rem 2.0rem;align-self: center;}
 .menu__item.active,.menu__item:hover,.menu__item:focus{ background: var(--dark-black);}
 .menu__item--link{text-decoration: none; color:var(--white);text-transform: capitalize;}
+
+
+@media(max-width:567px){
+    .menu__item {
+        margin: 0 0.15rem;
+        padding: 0.75rem 0.5rem;
+        align-self: center;
+    }
+}

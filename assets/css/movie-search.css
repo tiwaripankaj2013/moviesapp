@@ -1,0 +1,88 @@
+
+
+/* search form  */
+.form__group{margin-top: 2rem;margin-bottom: 2rem;}
+.form__control,input.form__control:focus{padding: 0.5rem 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    outline: 1px solid var(--gray);
+    max-width: 30rem;
+    width: 100%;
+    margin-right: 0;}
+.btn-info,.btn-info:focus{ padding: 0.4rem 1.25rem;
+    font-size: 1.25rem;
+    position: relative;
+    left: -0.18rem;
+    background: var(--blue);
+    color: var(--white);
+    outline: 1px solid var(--blue);
+    border-color: transparent;
+    top: 1px;}
+/* search form  */
+ 
+
+.range{position: relative; margin:1rem;}
+.range__title{font-size: 1.15rem;
+               font-weight: 600;
+               color: var(--black);
+               text-transform: capitalize; 
+            }
+.range__slider {
+    -webkit-appearance: none;
+    width: calc(100% - 3rem);
+    height: 1rem;
+    background: var(--light);
+    border: 2px solid var(--black);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin: 1rem auto;
+  }
+  
+  .range__slider:hover {
+    opacity: 1;
+  }
+  
+  .range__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 2.5rem;
+    background: var(--light);
+    /* cursor:ew-resize; */
+    cursor: pointer;
+    border-top: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    border: 2px solid var(--black);  
+    border-radius: 2px 2px 50% 50%;
+    
+  }
+  
+  .range__slider::-moz-range-thumb {
+    width: 1.5rem;
+    height: 2.5rem;
+    background: var(--light);
+    border: 2px solid var(--black);
+    /* cursor:ew-resize; */
+    cursor: pointer;
+    border-radius: 2px 2px 50% 50%;
+  }
+  .range__output{
+    position: absolute;
+    right: 0rem;
+    top: 50%;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.15rem;
+    transform: translateY(-50%);
+    margin-top: 1%;
+    width: 3rem;
+    text-align: center;
+    border:inset var(--light);
+  }
+  @media(max-width:567px){
+    .form__control, input.form__control:focus {max-width: 17rem; margin-left: 1rem;}
+  }

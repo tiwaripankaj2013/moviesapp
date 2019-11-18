@@ -60,3 +60,36 @@
     text-align: justify;
     color: var(--gray);
 }
+
+/* filmo graphy */
+.filmography__releaseYear{
+    background: var(--light);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--black);
+}
+.filmography__list{
+    margin-bottom: 0.75rem;
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    .filmography__list--item{line-height: 1.25rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;}
+    
+    .filmography__list--item span{
+        padding-left: 0.75rem;
+        color: var(--gray);
+    }
+
+
+@media(max-width:768px){
+    .actor__profile{margin-right: 0rem;}
+    .actor__profile--img{max-width: 100%;}
+    .actor__profile--img img{display: block; margin: 0 auto 2rem;}
+}
+
+@media(max-width:567px){
+    .actor__rating{margin-bottom: 1rem;}
+}

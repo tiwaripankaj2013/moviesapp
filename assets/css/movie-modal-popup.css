@@ -20,8 +20,8 @@
     display: block;
     background: var(--white);
     padding:0;
-    width:700px;
-    max-width: 100%;
+    width:100%;
+    max-width:45rem;
     z-index: 1;
 }
 .modal__header{
@@ -57,5 +57,16 @@
     line-height: 1.25rem;
     font-size: 1rem;
     color: var(--gray);
+    text-align: justify;
 }
 /* .modal__hide{visibility: hidden;} */
+
+@media(max-width:768px){
+    .modal__figure img{
+        display: block;
+        margin: 0rem auto 1rem;
+        }
+}
+@media(max-width:567px){
+    .modal{max-width: 20rem;}
+}

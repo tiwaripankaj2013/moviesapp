@@ -10,12 +10,13 @@
             margin: 0px auto;    
         }
 .row{
+        width: 100%;
         display: flex;
         flex-flow: row wrap;
     }
-[class*="col__"] {
+/* [class*="col__"] {
     box-sizing:border-box;
-}
+} */
 .col__1{
     flex:0 0 8.33%;
     max-width: 8.33%;

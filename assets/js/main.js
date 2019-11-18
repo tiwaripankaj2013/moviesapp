@@ -23,7 +23,7 @@ Promise.all(allMovie).then(data => {
    let  createGenres = (genresid) =>{
     const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id) )
     let genereName = '';
-    currentGenres.map(item => genereName += item.name + ', ');
+    currentGenres.forEach(item => genereName += item.name + ', ');
     genereName = genereName.slice(0, -2); 
     return genereName;
    }

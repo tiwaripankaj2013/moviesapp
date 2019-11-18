@@ -1,29 +1,25 @@
 const API_KEY = 'c3af9aa883165bf5f7b94ca5a97ada14';
 let baseurl=`https://api.themoviedb.org/3/`;
 
-const URL_GENREE = `${baseurl}genre/movie/list?api_key=${API_KEY}&language=en-US`;
-const URL_LATESTMOVIE = `${baseurl}movie/now_playing?api_key=${API_KEY}&language=en-US`;
-const URL_TRANDINGMOVIE = `${baseurl}trending/movie/week?api_key=${API_KEY}&language=en-US`;
-const URL_POPULARMOVIE = `${baseurl}movie/popular?api_key=${API_KEY}&language=en-US`;
-
-
 export var movieApi = {
     
     generes : () => {
+        const URL_GENREE = `${baseurl}genre/movie/list?api_key=${API_KEY}&language=en-US`;
         return fetch(URL_GENREE).then(res => res.json()).catch(error => error)
     },
 
     latestMovie: () =>{
+        const URL_LATESTMOVIE = `${baseurl}movie/now_playing?api_key=${API_KEY}&language=en-US`;
         return fetch(URL_LATESTMOVIE).then(res => res.json()).catch(error => error)
     },
 
     trandingMovie:() =>{
-        
+        const URL_TRANDINGMOVIE = `${baseurl}trending/movie/week?api_key=${API_KEY}&language=en-US`;
         return fetch(URL_TRANDINGMOVIE).then(res => res.json()).catch(error => error)
     },
 
     popularMovie: () =>{
-       
+        const URL_POPULARMOVIE = `${baseurl}movie/popular?api_key=${API_KEY}&language=en-US`;
         return fetch(URL_POPULARMOVIE).then(res => res.json()).catch(error => error)
     },
 
@@ -42,7 +38,7 @@ export var movieApi = {
         return fetch(URL_ACTORDETAIL).then(res => res.json()).catch(error => error);
     },
 
-    actorFilmography: (ACTOR_ID) =>{
+   filmography: (ACTOR_ID) =>{
         const URL_ACTORFIMOGRAPHY = `${baseurl}person/${ACTOR_ID}/movie_credits?api_key=${API_KEY}&language=en-US`;   
         return fetch(URL_ACTORFIMOGRAPHY).then(res => res.json()).catch(error => error)
     },

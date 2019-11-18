@@ -26,6 +26,20 @@ var utility = {
         directorName:(moviiDetailData) =>{
             let director = moviiDetailData.credits.crew.filter(movieDirector => movieDirector.job === 'Director')[0];
             return director.name;
+        },
+        rating:(ratingValue) =>{
+            return Math.floor(ratingValue/2);
+        },
+        uniqueMovies : (movies) => {
+            var resultIds = [];
+            var resultData = [];
+            for (let movie of movies) {
+                if (resultIds.indexOf(movie.id) == -1) {
+                    resultIds.push(movie.id);
+                    resultData.push(movie);
+                }
+            }
+            return resultData;
         }
  }
 

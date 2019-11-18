@@ -1,58 +1,60 @@
 /* movie card view  */
-.movie{
+.movie {
     padding: 0rem;
     box-shadow: 0px 1px 2px 1px var(--gray);
-    background:var(--white);
-   margin: 1.25rem 0.5rem 0.25rem;
-   transition: all .5s ease-in-out;
+    background: var(--white);
+    margin: 1rem;
+    transition: all .5s ease-in-out;
+    height: 100%;
 }
-.movie:hover,.movie:focus{
+
+.movie:hover,
+.movie:focus {
     box-shadow: 0px 0px 4px 2px var(--gray);
     cursor: pointer;
     transform: scale(1.05);
-            }
+}
 
-.movie__figure img{
-                margin: 0 auto;
-                max-width: 100%;
-               
-            }
-.movie__desc{margin: 0.75rem; padding-bottom: 1.5rem;}
-.movie__tittle{margin: 0.75rem 0rem;font-size: 1rem; text-transform: capitalize;display: flex;
-    justify-content: space-between;}
+.movie__figure img {
+    margin: 0 auto;
+    max-width: 100%;
+
+}
+
+.movie__desc {
+    margin: 0.75rem;
+}
+
+.movie__tittle {
+    margin: 0.75rem 0rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* .movie__likes{} */
-.movie__type{font-size: 0.65rem; margin-bottom: 0.5rem;}
+.movie__type {
+    font-size: 0.65rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
 
-.movie__rating {text-decoration: none;}
-.movie__details{ font-size: 0.75rem;}
+.movie__rating {
+    text-decoration: none;
+}
+
+.movie__details {
+    font-size: 0.75rem;
+}
 
 
 /* border */
 
-.border__b--gray2{
-    border-bottom:2px solid var(--gray) ;
+.border__b--gray2 {
+    border-bottom: 2px solid var(--gray);
 }
-.margin__b--1{margin-bottom: 1rem;}
 
-
-/* search movies  */
-
-/* search form  */
-.form__group{margin-top: 2rem;margin-bottom: 2rem;}
-.form__control,input.form__control:focus{padding: 0.5rem 0.75rem;
-    font-size: 1.05rem;
-    font-weight: 500;
-    outline: 1px solid var(--gray);
-    max-width: 30rem;
-    width: 100%;
-    margin-right: 0;}
-.btn-info,.btn-info:focus{ padding: 0.4rem 1.25rem;
-    font-size: 1.25rem;
-    position: relative;
-    left: -0.18rem;
-    background: var(--blue);
-    color: var(--white);
-    outline: 1px solid var(--blue);
-    border-color: transparent;
-    top: 1px;}
-/* search form  */
+.margin__b--1 {
+    margin-bottom: 1rem;
+}
