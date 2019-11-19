@@ -1,5 +1,15 @@
 # Movie App
 
+Project Version : 3.2.1
+Project Start Date : 24-10-2019.
+Project End Date : 19-11-2019
+No. Of Developers : 1
+
+## Project Developer 
+Name : Pankaj Kumar Tiwari
+Email: tiwaripanakj2013@gmail.com
+Mobile:+91 9717889719
+
 ## Project Overview
 A application that displays a list of movies as a list of cards. Each card provides movie detail such as movie title, movie Genre, movie poster, and movie rating. Whenever a user clicks on the poster a pop will appear after that user is able to see more information like movie description, movie cast, and all the details. App uses The Movie Database API taen from https://www.themoviedb.org/account/signup?language=en-EN.
 
