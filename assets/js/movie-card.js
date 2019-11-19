@@ -1,11 +1,11 @@
 // template Movie card lauyout in insert data 
 let  movieCard = (movieImage, movieImgTitle, movieTitle, 
       movieGeneries, movieRating, movieId, moviCardId)=> {
-    var moviecardTemplate = document.querySelector(".template");
-    var tempItem = moviecardTemplate.content.querySelector("article");
+    let moviecardTemplate = document.querySelector(".template");
+    let tempItem = moviecardTemplate.content.querySelector("article");
 
-    var node = document.importNode(tempItem, true);
-    var imgNode =   node.querySelector('.movie__figure img')
+    let node = document.importNode(tempItem, true);
+    let imgNode =   node.querySelector('.movie__figure img')
                     imgNode.src = movieImage;
                     imgNode.alt = movieImgTitle;
                     imgNode.title = movieImgTitle;

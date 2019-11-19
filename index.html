@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="All latest and trending movies list ">
     <meta name="keywords" content="hollywood movies, action movies , romantic movies, movies">
     <meta name="author" content="Pankaj Kumar Tiwari">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png"   href="./assets/images/movies-app.png">
     <link href="./assets/css/style.css" rel="stylesheet">
-    <title>Movies List App</title>
-   
+
+    <title>Movies App</title>
+
 </head>
 
 <body>
@@ -21,36 +22,33 @@
                         <a href="" class="text-white m-view"><i class="fa fa-3x fa-bars"></i></a>
 
                         <ul class="menu__list" role="menu">
-                            <!-- <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="0" class="menu__item--link"></a></li> -->
-                            <li class="menu__item active"><a href="JavaScript:Void(0);" tabindex="1"
+                            <li class="menu__item active"><a href="index.html" tabindex="1"
                                     class="menu__item--link">Home</a></li>
-                            <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="2"
+                            <li class="menu__item"><a href="search-movie.html" tabindex="2"
                                     class="menu__item--link">Explore</a></li>
-                            <li class="menu__item"><a href="search-movie.html" tabindex="3"
-                                    class="menu__item--link">search movie</a></li>
+                             
                         </ul>
                     </nav>
                 </div>
             </section>
-            
+
         </header>
 
         <!-- latest movie card section start -->
         <section class="container">
-            <header class="row">
+            <div class="row">
                 <div class="col__12">
                     <h3 class="text-black tittle__3">Latest</h3>
                 </div>
-            </header>
-            <div class="movie__list d-flex">
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
-                <div class="row" id="temp-data">
+            </div>
+            <div class="row" id="latestMovies">
                     <template class="template">
-                        <article class="col__3 col__sm--6 col__xs--12 margin__b--1">
+                        <article class="col__3 col__sm--6 col__xs--12 margin__b--2">
                             <!-- movie card start -->
                             <div class="movie">
                                 <figure class="movie__figure" id="modal__open">
-                                    <img src="./assets/images/placeholder300X300.png" alt="" title="" class="img-fill" data-id="">
+                                    <img src="./assets/images/placeholder300X300.png" alt="" title="" class="img-fill"
+                                        data-id="">
                                 </figure>
                                 <!-- movie description -->
                                 <div class="movie__desc">
@@ -69,43 +67,35 @@
                                 <!-- /movie description -->
                             </div>
                             <!-- movie card end -->
-                </div>
+                        </article>
                 </template>
             </div>
-            <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
-            </div>
+
         </section>
         <!-- /latest movie card section end -->
 
 
         <!-- Trending movie card section start -->
         <section class="container">
-            <header class="row">
+            <div class="row">
                 <div class="col__12">
                     <h3 class="text-black tittle__3">Trending</h3>
                 </div>
-            </header>
-            <div class="movie__list d-flex">
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
-                <div class="row" id="trendingMovies">
-                </div>
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
+            </div>
+            
+            <div class="row" id="trendingMovies">
             </div>
         </section>
         <!-- /Trending movie card section end -->
 
         <!-- Most watched movie card section start -->
         <section class="container">
-            <header class="row">
+            <div class="row">
                 <div class="col__12">
                     <h3 class="text-black tittle__3">Most Watched</h3>
                 </div>
-            </header>
-            <div class="movie__list d-flex">
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-left"></i></a>
-                <div class="row" id="mostWatchedMovies">
-                </div>
-                <a href="" class="btn btn-default alignself-center"><i class="fa fa-3x fa-angle-right"></i></a>
+            </div>
+            <div class="row" id="mostWatchedMovies">
             </div>
         </section>
         <!-- /Most watched movie card section end -->
@@ -117,7 +107,7 @@
         <article class="modal-container modal__hide">
             <div class="modal">
                 <div class="modal__header d-flex align-around">
-                    <h2 class="tittle__3">  </h2>
+                    <h2 class="tittle__3"> </h2>
                     <button class="btn-default modal__popup--close"><i class="fa fa-close"></i></button>
                 </div>
                 <div class="modal__body">

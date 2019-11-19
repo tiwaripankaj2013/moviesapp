@@ -1,14 +1,9 @@
-
 import {movieApi} from './movie-api.js';
 import {movieCard} from './movie-card.js';
 import {movieDetailLayout} from './movie-detail-layout.js';
 import {utility} from './utility.js';
 
-
-const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
-
 let allMovie = [];
-
 const movieId = utility.getIdToURL('id');
 
 allMovie.push(
@@ -22,37 +17,32 @@ Promise.all(allMovie).then(data => {
     let movieDetailData = data.shift();
     let similarMovies = data.shift();
 
-   function createGenres(genresid){
-    const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id) )
-    let genereName = '';
-    currentGenres.map(item => genereName += item.name + ', ');
-    genereName = genereName.slice(0, -2); 
-    return genereName;
-   }
-   console.log(movieDetailData);
+//    console.log(movieDetailData);
 // movidetail data 
     movieDetailLayout(
-        `${POSTER_PATH}${movieDetailData.backdrop_path}`,
+        `${utility.posterPath()}${movieDetailData.backdrop_path}`,
             movieDetailData.title,
             movieDetailData.original_title,
             movieDetailData.overview,
             utility.dataMap(movieDetailData.genres),
             movieDetailData.credits.cast,
             utility.directorName(movieDetailData),
-            utility.starReview(Math.round(movieDetailData.vote_average/2)),
+            utility.starReview(utility.rating(movieDetailData.vote_average)),
             'movidetailsapp'
         );
         
     // similar Movies list
     similarMovies.results.slice(0,4).forEach((similarMovie)=>{
          movieCard(
-            `${POSTER_PATH}${similarMovie.backdrop_path}`,
+            `${utility.posterPath()}${similarMovie.backdrop_path}`,
             similarMovie.original_title,
             similarMovie.title,
-            createGenres(similarMovie.genre_ids),
-            utility.starReview(Math.round(similarMovie.vote_average/2)),
+            utility.createGenres(similarMovie.genre_ids,generesData),
+            utility.starReview(utility.rating(similarMovie.vote_average)),
             similarMovie.id,
             'similarMovies' 
         )
     })
+    // modal popup/quick view 
+    utility.modalPopupShow();
 }).catch(err => document.querySelector('body').innerHTML=err);

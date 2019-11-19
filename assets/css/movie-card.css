@@ -35,7 +35,7 @@
 
 /* .movie__likes{} */
 .movie__type {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     margin-bottom: 0.5rem;
     text-transform: capitalize;
 }
@@ -57,4 +57,7 @@
 
 .margin__b--1 {
     margin-bottom: 1rem;
+}
+.margin__b--2 {
+    margin-bottom: 2rem;
 }

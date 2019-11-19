@@ -1,7 +1,6 @@
 import {movieApi} from './movie-api.js';
 import {utility} from './utility.js';
 
-const POSTER_PATH = `https://image.tmdb.org/t/p/w500/`;
  
 let allActor = [];
 const ACTOR_ID = utility.getIdToURL('id');
@@ -21,7 +20,7 @@ Promise.all(allActor).then(data => {
 
    let node = document.importNode(actorDetailnode, true);
    let actorfigure = node.querySelector('.actor__profile--img img');
-       actorfigure.src=`${POSTER_PATH}${actorDetail.profile_path}`;
+       actorfigure.src=`${utility.posterPath()}${actorDetail.profile_path}`;
        actorfigure.alt= actorDetail.name;
        actorfigure.title = actorDetail.name;
 
@@ -41,7 +40,7 @@ var list = document.querySelector("#filmList");
 var panelBody = document.querySelector("#panelBody");
 
         var filmYears = [];
-        console.log(filmography);
+        // console.log(filmography);
         filmography.cast.forEach(item => {
             let filmYear = item.release_date.split("-")[0];
 
@@ -68,7 +67,6 @@ var panelBody = document.querySelector("#panelBody");
                     let clonePanelBody = document.importNode(panelBodyContent, true);
 
                     // console.log(clonePanelBody);
-                    // debugger;
                     clonePanelBody.querySelector(".title").textContent = ele.title;
                     clonePanelBody.querySelector(".year").textContent = ele.release_date;
                     clonePanelBody.querySelector(".character").textContent = ele.character;
