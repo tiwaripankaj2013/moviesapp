@@ -4,11 +4,11 @@ let movieDetailLayout = (movieBanner, movieBannerTitle, movieDetailTitle,
                            movieDetailDesc, movieGeneries, movieDetailCast,
                             mvoiDetailDirector, movieDetailRatings, moviDetailId)=>{
 
-    var movieDetailLayout = document.querySelector(".moviDetailTemplate");
-    var moviDetailLayout = movieDetailLayout.content.getElementById("moviDetailLayout");
+    let movieDetailLayout = document.querySelector(".moviDetailTemplate");
+    let moviDetailLayout = movieDetailLayout.content.getElementById("moviDetailLayout");
 
-    var node = document.importNode(moviDetailLayout, true);
-    var Moviefigure = node.querySelector('.banner__img');
+    let node = document.importNode(moviDetailLayout, true);
+    let Moviefigure = node.querySelector('.banner__img');
         Moviefigure.src= movieBanner;
         Moviefigure.alt= movieBannerTitle;
         Moviefigure.title =  movieBannerTitle;

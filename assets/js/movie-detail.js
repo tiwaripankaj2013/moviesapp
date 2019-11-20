@@ -43,6 +43,7 @@ Promise.all(allMovie).then(data => {
             'similarMovies' 
         )
     })
+    utility.favouriteMovies();
     // modal popup/quick view 
     utility.modalPopupShow();
 }).catch(err => document.querySelector('body').innerHTML=err);

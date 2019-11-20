@@ -17,14 +17,17 @@
                 <div class="row">
                     <nav class="menu__bar">
                         <a href="index.html" class="logo text-white">Movie App</a>
-                        <a href="" class="text-white m-view"><i class="fa fa-3x fa-bars"></i></a>
+                        <a href="javascript:void(0)" class="text-white m-view"><i class="fa fa-3x fa-bars"></i></a>
 
                         <ul class="menu__list" role="menu">
-                            <!-- <li class="menu__item"><a href="JavaScript:Void(0);" tabindex="0" class="menu__item--link"></a></li> -->
-                            <li class="menu__item active"><a href="JavaScript:Void(0);" tabindex="1"
-                                    class="menu__item--link">Home</a></li>
-                            <li class="menu__item"><a href="search-movie.html" tabindex="2"
-                                    class="menu__item--link">Explore</a></li>
+                         
+                            <ul class="menu__list" role="menu">
+                                <li class="menu__item "><a href="index.html" tabindex="1"
+                                        class="menu__item--link">Home</a></li>
+                                <li class="menu__item menu__item--active"><a href="search-movie.html" tabindex="2"
+                                        class="menu__item--link">Explore</a></li>
+                                 
+                            </ul>
                            
                         </ul>
                     </nav>
@@ -80,11 +83,11 @@
         <!-- search movie results -->
 
         <section class="container">
-            <header class="row">
+            <div class="row">
                 <div class="col__12">
                     <h3 class="text-black tittle__3">Search movie results</h3>
                 </div>
-            </header>
+            </div>
             <div class="movie__list d-flex">
                 
                 <div class="row" id="searcMovieResult">
@@ -99,13 +102,13 @@
                             <!-- movie description -->
                             <div class="movie__desc">
                                 <h5 class="movie__tittle text-black">
-                                    <a href="" class="movie__likes text-black">
-                                        <i class="fa fa-heart-o"></i>
+                                    <a href="javascript:void(0)" class="movie__likes text-black">
+                                        <i class="fa fa-heart"></i>
                                     </a>
                                 </h5>
                                 <p class="movie__type text-gray"></p>
                                 <p class="d-flex align-around">
-                                    <a href="" class="movie__rating text-black">
+                                    <a href="javascript:void(0)" class="movie__rating text-black">
 
                                     </a>
                                     <a class="movie__details text-blue" href=" ">Show More</a>
@@ -116,8 +119,6 @@
                         <!-- movie card end -->
                     </article>
                 </template>
-
-               
             </div>
         </section>
         <!-- search movie results -->

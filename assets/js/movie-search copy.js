@@ -1,37 +1,52 @@
+import { movieApi } from './movie-api.js';
 import { movieCard } from './movie-card.js';
 import { utility } from './utility.js';
-
-
-    // get movies from local storage 
-var localMovies = JSON.parse(localStorage.getItem('localUniqueMovies'));
-
-    //   get genres name from local storage
-var localGenresData = JSON.parse(localStorage.getItem('localGenres'));
-
 
 let notFound= `<div class="not__found">
                 <p class="text-center"><i class="fa fa-search text-gray fa-3x"></i></p>
                     <p class="text-center">Your search  Not found !<p>
                 </div>`;
 
+let allMovie = [];
+allMovie.push(
+    movieApi.generes(),
+    movieApi.latestMovie(),
+    movieApi.trandingMovie(),
+    movieApi.popularMovie(),
+);
+
+Promise.all(allMovie).then(data => {
+    let generesData = data.shift();
+    let latestMovieData = data.shift().results;
+    let trandingMovieData = data.shift().results;
+    let popularMovieData = data.shift().results;
+
+    let allMovies = [...latestMovieData, ...trandingMovieData, ...popularMovieData];
+
     let movieData = (movie, id, idName) => {
         movieCard(
             `${utility.posterPath()}${movie.backdrop_path}`,
             movie.original_title,
             movie.title,
-            utility.createGenres(movie.genre_ids, localGenresData),
+            utility.createGenres(movie.genre_ids, generesData),
             utility.starReview(utility.rating(movie.vote_average )),
             id,
             idName
         )
     }
 
+    // store movies in local storage
+    localStorage.setItem('allMovies', JSON.stringify(allMovies));
+    const localdata = JSON.parse(localStorage.getItem('allMovies'));
+    // store genres name in local storage 
 
+    localStorage.setItem('genres', JSON.stringify(generesData));
+    var localGenresData = JSON.parse(localStorage.getItem('genres'));
 
-    
+    /* utility.uniqueMovies method to find unique movies list  */
 
     // before search and filter show default movies list
-    localMovies.slice(0, 12).forEach((localMovie) => {
+    utility.uniqueMovies(localdata).slice(0, 12).forEach((localMovie) => {
         movieData(localMovie, localMovie.id, 'searcMovieResult');
     });
 
@@ -45,10 +60,11 @@ let notFound= `<div class="not__found">
 
             if (inputvalues != '') {
                 
-                var searchMovies = localMovies.filter((singlemovie) => {
+                var localMovies = localdata.filter((singlemovie) => {
                     let localTitle = singlemovie.title.toLowerCase().includes(inputvalues);
                     let localGenres = utility.createGenres(singlemovie.genre_ids,localGenresData).includes(inputvalues);
-
+                    
+                    //console.log(utility.createGenres(singlemovie.genre_ids,localGenresData));
                     //console.log(inputvalues)
                     return(localTitle || localGenres);
                 });
@@ -57,7 +73,7 @@ let notFound= `<div class="not__found">
                 
                 printMovieCard();
                 
-                if (searchMovies.length == 0) {
+                if (localMovies.length == 0) {
                     document.querySelector('#searcMovieResult').innerHTML = notFound;
                 }
             }
@@ -72,7 +88,7 @@ let notFound= `<div class="not__found">
             document.querySelector('.filterValue').innerHTML=filterValue;
 
             //   utility.rating function convert rating 10 to 5 rating floor value
-            var searchMovies = localMovies.filter((singleMovie) => {
+            var localMovies = utility.uniqueMovies(localdata).filter((singleMovie) => {
               
                 if (utility.rating(filterValue) <= utility.rating(singleMovie.vote_average)) {
                     return singleMovie;
@@ -81,23 +97,23 @@ let notFound= `<div class="not__found">
             });
             document.querySelector('#searcMovieResult').innerHTML = '';
             printMovieCard();
-            if (searchMovies.length == 0) {
+            if (localMovies.length == 0) {
                 document.querySelector('#searcMovieResult').innerHTML = notFound;
             }
         }
 
         function printMovieCard(){
-            searchMovies.forEach((searchMovie) => {
-                movieData(searchMovie, searchMovie.id, 'searcMovieResult');
+            utility.uniqueMovies(localMovies).forEach((localMovie) => {
+                movieData(localMovie, localMovie.id, 'searcMovieResult');
           })
       };
-     
-    //   search and filtermovies after like
-    utility.favouriteMovies();
+
       // show filter and seacrch  movies modal popup
       utility.modalPopupShow();
     }
-
+    
 // show similar movies modal popup
     utility.modalPopupShow();
-    utility.favouriteMovies();
+
+}).catch(error => console.log(error));
+// .catch(error => document.querySelector('body').innerHTML=error);

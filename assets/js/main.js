@@ -13,10 +13,22 @@ allMovie.push(
 
 Promise.all(allMovie).then(data => {
     let generesData = data.shift();
-    let latestMovieData = data.shift();
-    let trendingMovieData = data.shift();
-    let popularMovieData = data.shift();
+    let latestMovieData = data.shift().results;
+    let trendingMovieData = data.shift().results;
+    let popularMovieData = data.shift().results;
 
+    // merege all movies data in single array
+    var allMovies = [...latestMovieData, ...trendingMovieData, ...popularMovieData];
+    
+    var localUniqueMovies = utility.uniqueMovies(allMovies)
+  
+    // store movies in local storage
+    localStorage.setItem('localUniqueMovies', JSON.stringify(localUniqueMovies));
+     // store genres name in local storage 
+     localStorage.setItem('localGenres', JSON.stringify(generesData));
+      
+ 
+     /* utility.uniqueMovies method to find unique movies list  */
     let movieData = (movie, id, idName) => {
         movieCard(
             `${utility.posterPath()}${movie.backdrop_path}`,
@@ -32,17 +44,17 @@ Promise.all(allMovie).then(data => {
 
 
     /* latest movies data create card layouts */
-    latestMovieData.results.slice(0, 4).forEach((latestMovie) => {
+    latestMovieData.slice(0, 4).forEach((latestMovie) => {
         movieData(latestMovie, latestMovie.id, 'latestMovies');
     });
 
     /* trending  movies data create card layouts */
-    trendingMovieData.results.slice(0, 4).forEach((trendingMovie) => {
+    trendingMovieData.slice(0, 4).forEach((trendingMovie) => {
         
         movieData(trendingMovie, trendingMovie.id, 'trendingMovies');
     });
     /* popular  movies data create card layouts */
-    popularMovieData.results.slice(0, 4).forEach((popularMovie) => {
+    popularMovieData.slice(0, 4).forEach((popularMovie) => {
         
         movieData(popularMovie, popularMovie.id, 'mostWatchedMovies');
     });
@@ -51,6 +63,7 @@ Promise.all(allMovie).then(data => {
 //    show modal popup
     utility.modalPopupShow();
 
-   
+    utility.favouriteMovies();
 })
-.catch(error => document.querySelector('body').innerHTML = error);
+.catch(error =>console.log(error));
+// document.querySelector('body').innerHTML = error

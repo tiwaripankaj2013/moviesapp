@@ -35,8 +35,8 @@ var utility = {
         return Math.floor(ratingValue / 2);
     },
     uniqueMovies: (movies) => {
-        var resultIds = [];
-        var resultData = [];
+        let resultIds = [];
+        let resultData = [];
         for (let movie of movies) {
             if (resultIds.indexOf(movie.id) == -1) {
                 resultIds.push(movie.id);
@@ -46,13 +46,20 @@ var utility = {
         return resultData;
     },
     createGenres: (genresid, generesData) => {
-        const currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id))
+        let currentGenres = generesData.genres.filter(genre => genresid.includes(genre.id))
         let genereName = '';
         currentGenres.forEach(item => genereName += item.name + ', ');
         genereName = genereName.slice(0, -2);
         return genereName.toLocaleLowerCase();
     },
-   
+    favouriteMovies: () => {
+        document.querySelectorAll(".fa-heart").forEach(element => {
+            element.addEventListener('click', () => {
+                console.log(element);
+                element.classList.toggle("text-red");
+            })
+        })
+    },
     modalPopupShow : () => {
         let modalImgClassget = document.querySelectorAll('.movie__figure');
         let showModal = (e) => {
@@ -73,7 +80,6 @@ var utility = {
             });
 
             return moviId;
-
         }
         for (let i = 0; i < modalImgClassget.length; i++) {
             modalImgClassget[i].addEventListener('click', showModal, false);
