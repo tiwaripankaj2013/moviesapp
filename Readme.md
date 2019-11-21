@@ -179,3 +179,5 @@ createGenres: In this Method I have Pass genres id, genresdata and get return ge
 
 modalPopupShow: This method is responsable to call on select Moviefigure class and add 
 click addEventListener and register event listner on click that show modal popup.
+
+

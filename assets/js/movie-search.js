@@ -1,19 +1,18 @@
 import { movieCard } from './movie-card.js';
 import { utility } from './utility.js';
 
-
-    // get movies from local storage 
+// get movies from local storage 
 var localMovies = JSON.parse(localStorage.getItem('localUniqueMovies'));
-
-    //   get genres name from local storage
+ //   get genres name from local storage
 var localGenresData = JSON.parse(localStorage.getItem('localGenres'));
 
 
+//create error msg div 
 let notFound= `<div class="not__found">
                 <p class="text-center"><i class="fa fa-search text-gray fa-3x"></i></p>
                     <p class="text-center">Your search  Not found !<p>
                 </div>`;
-
+// populate movie card template
     let movieData = (movie, id, idName) => {
         movieCard(
             `${utility.posterPath()}${movie.backdrop_path}`,
@@ -26,20 +25,18 @@ let notFound= `<div class="not__found">
         )
     }
 
-
-
-    
-
-    // before search and filter show default movies list
+// before search and filter show default movies list
     localMovies.slice(0, 12).forEach((localMovie) => {
         movieData(localMovie, localMovie.id, 'searcMovieResult');
     });
 
-    document.querySelector('.searchMovie').addEventListener('keyup', getValue);
-    document.querySelector('.filterMovie').addEventListener('input', getValue);
+    document.querySelector('.searchMovie').addEventListener('keyup', getFilteredMovie);
+    document.querySelector('.filterMovie').addEventListener('input', getFilteredMovie);
 
-     function getValue (e) {
-        /* serach movies by name */
+    // filter movies according to title, genre and movie rating
+
+     function getFilteredMovie (e) {
+        /* serach movies by name and genre */
         if (e && e.type == 'keyup') {
            let inputvalues = this.value.toLowerCase();
 
@@ -61,11 +58,16 @@ let notFound= `<div class="not__found">
                     document.querySelector('#searcMovieResult').innerHTML = notFound;
                 }
             }
+            else{
+                document.querySelector('#searcMovieResult').innerHTML = '';
+                localMovies.slice(0, 12).forEach((localMovie) => {
+                    movieData(localMovie, localMovie.id, 'searcMovieResult');
+                });
+            }
             
         }
-            /* serach movies by name  end */
-
-        /* filter value by range */
+           
+        /* filter value by rating */
         else if (e && e.type == 'input') {
             let filterValue = this.value;
             /* show input rating on webpage*/
@@ -73,11 +75,8 @@ let notFound= `<div class="not__found">
 
             //   utility.rating function convert rating 10 to 5 rating floor value
             var searchMovies = localMovies.filter((singleMovie) => {
-              
-                if (utility.rating(filterValue) <= utility.rating(singleMovie.vote_average)) {
-                    return singleMovie;
-                }
-                return utility.rating(singleMovie.vote_average).toString().includes(utility.rating(filterValue).toString());
+                if (filterValue <= utility.rating(singleMovie.vote_average)) 
+                                     return singleMovie;
             });
             document.querySelector('#searcMovieResult').innerHTML = '';
             printMovieCard();
@@ -85,7 +84,7 @@ let notFound= `<div class="not__found">
                 document.querySelector('#searcMovieResult').innerHTML = notFound;
             }
         }
-
+       
         function printMovieCard(){
             searchMovies.forEach((searchMovie) => {
                 movieData(searchMovie, searchMovie.id, 'searcMovieResult');
